@@ -1,11 +1,7 @@
-﻿using Modbus.Device;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO.Ports;
-using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Stend_cnt
@@ -19,7 +15,7 @@ namespace Stend_cnt
                 if (SerialPortClass.PropertiesReadSerialPort(ref _serialPort))
                 {
                     if (!_serialPort.IsOpen) _serialPort.Open();
-                   
+
                 }
             }
             catch (Exception err)
@@ -55,13 +51,13 @@ namespace Stend_cnt
                 DataBits = int.Parse(port_[2].ToUpperInvariant()),
                 StopBits = (StopBits)Enum.Parse(typeof(StopBits), port_[4], true),
             };
-   
-           // if (!_serialPort.IsOpen) _serialPort.Open();
+
+            // if (!_serialPort.IsOpen) _serialPort.Open();
             return true;
         }
     }
 
-   public class ValueRegister
+    public class ValueRegister
     {
 
         public float MB2Press { get; set; }

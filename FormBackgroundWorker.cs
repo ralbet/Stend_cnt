@@ -1,17 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using Modbus.Device;
+using System;
 using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using System.Threading;
-using Modbus.Device;
-using System.IO.Ports;
-using System.Net.Sockets;
 using System.IO;
+using System.IO.Ports;
+using System.Linq;
+using System.Threading;
+using System.Windows.Forms;
 
 namespace Stend_cnt
 {
@@ -27,7 +22,6 @@ namespace Stend_cnt
         bool Start_potok = true;
         ValueRegister valueRegister = new ValueRegister();
         float[] valueRegisters2 = new float[8];
-
 
         BackgroundWorker worker;
         BackgroundWorker worker2;
@@ -111,12 +105,12 @@ namespace Stend_cnt
                     {
                         if (PressKomand == 0)
                         {
-                            if ( valueRegister.MB2in != PressKomand)
+                            if (valueRegister.MB2in != PressKomand)
                             {
                                 if (!_serialPort.IsOpen) _serialPort.Open();
                                 master.WriteSingleRegister(slaveId1, 526, (ushort)PressKomand);
                             }
-               
+
                         }
                         if (PressKomand == 1)
                         {
@@ -274,7 +268,7 @@ namespace Stend_cnt
         private void worker3_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
             //завершение потока
-  
+
         }
         void worker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
@@ -334,7 +328,7 @@ namespace Stend_cnt
             }
         }
 
-       private void DannyeNaEcran(ValueRegister valueRegister)
+        private void DannyeNaEcran(ValueRegister valueRegister)
         {
             ValueRegister _valueRegister = valueRegister;
             if (_valueRegister == null) return;
@@ -372,17 +366,6 @@ namespace Stend_cnt
             // string FN1 = FN.Remove(FN.Length - 4, 4);
             //имя исполняемого файла с расширением
             File.AppendAllText(Path.GetTempPath() + "Ошибка_stanok.txt", txtErr);
-        }
-
-        private void button4_Click(object sender, EventArgs e)
-        {
-            //сжатие
-            //////ushort value_ = Convert.ToUInt16(textBox2.Text);
-            //////while (MB2Press <= value_)
-            //////{
-            //////    master.WriteSingleRegister(slaveId, 526, 1);
-            //////}
-            //////master.WriteSingleRegister(slaveId, 526, 0);
         }
 
         private void numericUpDown2_ValueChanged(object sender, EventArgs e)
@@ -424,13 +407,12 @@ namespace Stend_cnt
             //останавливается при нажатии на стоп???
             //master.WriteSingleRegister(slaveId1, 526, 1);
             //проверить на управление:местное/дистанционное
-            if (valueRegister.MB2out==64F)
+            if (valueRegister.MB2out == 64F)
             {
                 MessageBox.Show("Переведите ПРЕСС на дистанционное управление");
                 return;
             }
             PressKomand = 1;
-
         }
 
         private void button6_Click(object sender, EventArgs e)
@@ -456,10 +438,6 @@ namespace Stend_cnt
                 return;
             }
             PressKomand = 0;
-        }
-        private void button5_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void button3_Click_1(object sender, EventArgs e)
@@ -496,8 +474,5 @@ namespace Stend_cnt
         //////    }
         //////    return Result;
         //////}
-
-
-
     }
 }

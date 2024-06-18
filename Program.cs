@@ -13,9 +13,9 @@ namespace Stend_cnt
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-           // Application.Run(new Form1());//FormBackgroundWorker
-                                         Application.Run(new FormBackgroundWorker());//
-           //  Application.Run(new FormSerialPort());// FormSerialPort
+            // Application.Run(new Form1());//FormBackgroundWorker
+            Application.Run(new FormBackgroundWorker());//
+                                                        //  Application.Run(new FormSerialPort());// FormSerialPort
         }
     }
 }

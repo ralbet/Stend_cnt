@@ -1,15 +1,9 @@
-﻿using Microsoft.Win32;
-using Modbus.Device;
+﻿using Modbus.Device;
 using System;
 using System.IO.Ports;
 using System.Linq;
-using System.Reflection.Emit;
-using System.Runtime.InteropServices;
-using System.Text.RegularExpressions;
 using System.Threading;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using static Stend_cnt.SerialPortClass;
 
 namespace Stend_cnt
 {
@@ -355,7 +349,7 @@ namespace Stend_cnt
                         {
                             registers = master.ReadHoldingRegisters(slaveId, 306, 2);
 
-                           // float Znach_ = PreobrZnach(registers);
+                            // float Znach_ = PreobrZnach(registers);
                             valueRegister.MB2Press = PreobrZnach(registers);
 
                             DannyeNaEcran(valueRegister);
@@ -408,7 +402,7 @@ namespace Stend_cnt
                         try
                         {
                             registers2 = master.ReadInputRegisters(slaveId, 0, 1);
- DannyeNaEcran2(registers2);
+                            DannyeNaEcran2(registers2);
                         }
                         catch (Exception err)
                         {
@@ -419,7 +413,7 @@ namespace Stend_cnt
                         }
 
 
-                       
+
                         flag = true;
                         //if (registers2 == null) return;
                         Thread.Sleep(_sleeping);
@@ -610,7 +604,7 @@ namespace Stend_cnt
                             });
                         }
 
-                       // float Znach_ = PreobrZnach(registers);
+                        // float Znach_ = PreobrZnach(registers);
                         valueRegister.MB2Press = PreobrZnach(registers);
 
                         DannyeNaEcran(valueRegister);
